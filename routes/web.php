@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\ElectromechController;
+
 Route::get('/', function () {
     return view('frontend.home');
 });
@@ -30,3 +32,21 @@ Route::get('member/password/reset', 'App\Http\Controllers\Auth\ForgotPasswordCon
 Route::post('member/password/email', 'App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail')->name('member.password.email');
 Route::get('member/password/reset/{token}', 'App\Http\Controllers\Auth\ResetPasswordController@showResetForm')->name('member.password.reset');
 Route::post('member/password/reset', 'App\Http\Controllers\Auth\ResetPasswordController@reset')->name('member.password.update');
+
+//Electrotech
+Route::get('/home', [ElectromechController::class, 'index']);
+Route::get('/contact', [ElectromechController::class, 'contacts']);
+Route::get('/ongoingproject', [ElectromechController::class, 'ongoings'])->name('ongoing');
+Route::get('/bod', [ElectromechController::class, 'BOD'])->name('bods');
+Route::get('/video', [ElectromechController::class, 'videos'])->name('video');
+Route::get('/completedproject', [ElectromechController::class, 'completeproject'])->name('completed');
+Route::get('/page2', [ElectromechController::class, 'completeproject'])->name('page2');
+Route::get('/page3', [ElectromechController::class, 'completeproject'])->name('page3');
+Route::get('/news', [ElectromechController::class, 'new'])->name('news');
+Route::get('/certification', [ElectromechController::class, 'certificate'])->name('certifications');
+Route::get('/glance', [ElectromechController::class, 'glances'])->name('glance');
+Route::get('/manufacture', [ElectromechController::class, 'manufact'])->name('maanufacture');
+Route::get('/maintain', [ElectromechController::class, 'maintains'])->name('maintaining');
+Route::get('/supply', [ElectromechController::class, 'suppply'])->name('supply');
+Route::get('/testing', [ElectromechController::class, 'test'])->name('testings');
+Route::get('/transformers', [ElectromechController::class, 'transform'])->name('transforms');
