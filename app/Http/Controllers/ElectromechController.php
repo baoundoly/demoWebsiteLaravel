@@ -56,4 +56,7 @@ class ElectromechController extends Controller
     public function transform(){
         return view ('admin.electromech.transformer');
     }
+    public function world(){
+        return view ('admin.electromech.world-super');
+    }
 }

@@ -56,12 +56,12 @@
                             Product
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Low Voltage Component<span class="ms-5"><i
+                            <li><a class="dropdown-item" href="#">Low Voltage Component<span class="ms-2"><i
                                             class="fa-solid fa-angle-right fa-lg"></i></span> </a>
 
                                 <ul class="submenu">
                                     <!-- style="border-left: 1px solid #f60000 !important;" border-style -->
-                                    <li><a class="dropdown-item" href="world-super.html">World Super WS Series:
+                                    <li><a class="dropdown-item" href="{{ route ('worlds') }}">World Super WS Series:
                                             630A-6300A</a></li>
                                     <li><a class="dropdown-item" href="#">Economic Series Mccb (Fixed)</a></li>
                                     <li><a class="dropdown-item" href="#">Miniature Circuit Breaker (MCB)</a></li>
