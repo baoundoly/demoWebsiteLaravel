@@ -15,7 +15,7 @@
 
 Clone git repository to local storage
 ```
-git clone https://gitlab.com/nanoit.biz/admin_panel.git
+git clone https://github.com/baoundoly/demoWebsiteLaravel.git
 ```
 Create .env file & need .env file updated
 ```
