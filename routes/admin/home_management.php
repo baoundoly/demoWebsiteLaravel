@@ -56,3 +56,11 @@ Route::prefix( 'image-info' )->name( 'image-info.' )->group( function () {
     Route::post( '/update/{editData}', 'ImageController@update' )->name( 'update' );
     Route::post( '/destroy', 'ImageController@destroy' )->name( 'destroy' );
 });
+Route::prefix( 'nav-info' )->name( 'nav-info.' )->group( function () {
+    Route::get( '/list', 'NavController@list' )->name( 'list' );
+    Route::get( '/add', 'NavController@add' )->name( 'add' );
+    Route::post( '/store', 'NavController@store' )->name( 'store' );
+    Route::get( '/edit/{editData}', 'NavController@edit' )->name( 'edit' );
+    Route::post( '/update/{editData}', 'NavController@update' )->name( 'update' );
+    Route::post( '/destroy', 'NavController@destroy' )->name( 'destroy' );
+});

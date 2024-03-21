@@ -300,8 +300,7 @@
                         </div>
                     </div>
                 </div>
-                
-                    <div class="col-md-6">
+                <div class="col-md-6">
                         <div class="mannu card " data-aos="fade-out" data-aos-easing="ease-in-out"
                             data-aos-duration="3000">
 
