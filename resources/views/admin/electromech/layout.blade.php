@@ -63,8 +63,8 @@
                                     <!-- style="border-left: 1px solid #f60000 !important;" border-style -->
                                     <li><a class="dropdown-item" href="{{ route ('worlds') }}">World Super WS Series:
                                             630A-6300A</a></li>
-                                    <li><a class="dropdown-item" href="#">Economic Series Mccb (Fixed)</a></li>
-                                    <li><a class="dropdown-item" href="#">Miniature Circuit Breaker (MCB)</a></li>
+                                    <li><a class="dropdown-item" href="{{ route ('economics') }}">Economic Series Mccb (Fixed)</a></li>
+                                    <li><a class="dropdown-item" href="{{ route ('mcb') }}">Miniature Circuit Breaker (MCB)</a></li>
                                     <li><a class="dropdown-item" href="#">Residual Current Circuit Breaker (RCCB)</a>
                                     </li>
                                     <li><a class="dropdown-item" href="#">Earth Leakage Circuit Breaker (ELCB)</a></li>
@@ -179,12 +179,13 @@
 
                         <div class="footer-sec row justify-content-center">
 
-                            <div class="col-lg-3 col-md-8 col-sm-8 col-8 mb-4" data-aos="fade-down" data-aos-easing="ease-in" data-aos-duration="2000" >
+                            <div class="col-lg-3 col-md-8 col-sm-8 col-8 mb-4"  >
                                 <div  data-aos="zoom-in-right" data-aos-easing="ease" data-aos-duration="2000"> <a
                                     class="footer-brand" href="index.html">
                                     <img src="https://electromechbd.net/wp-content/uploads/2023/03/electromech-logo-02.png"
                                         alt="logo" width="50%" height="15%">
-                                </a></div>
+                                </a>
+                            </div>
 
                                 <p class="small pt-5" data-aos="fade-up" data-aos-easing="ease" data-aos-duration="2000">
                                     ELECTROMECH is an engineering company with operations in the technology,

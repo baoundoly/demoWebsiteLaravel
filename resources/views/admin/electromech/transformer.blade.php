@@ -1,7 +1,15 @@
 @extends('admin.electromech.layout')
 @section('content')
 <section class="content">
-
+     
+           
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{{ route ('home') }}">Home</a></li>
+          <li class="breadcrumb-item"><a href="#">Switchgear</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Transformer</li>
+        </ol>
+      </nav>
     <div class="container">
         <div class="row mt-5 pt-5">
             <div class="col-lg-6">

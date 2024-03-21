@@ -59,4 +59,10 @@ class ElectromechController extends Controller
     public function world(){
         return view ('admin.electromech.world-super');
     }
+    public function economic(){
+        return view ('admin.electromech.economic-series');
+    }
+    public function miniatures(){
+        return view ('admin.electromech.miniature');
+    }
 }
