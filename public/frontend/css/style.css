@@ -117,6 +117,13 @@ html {
     list-style: none;
     
 }
+.breadcrumb li {
+    
+    font-size: 20px;
+    color: red;
+    padding-left: 150px;
+    cursor: pointer;
+}
 .carousel-inner img {
     height: 65vh;
 }
@@ -132,7 +139,13 @@ html {
     color: yellow;
     text-align: justify;
 }
-
+.carousel-control-prev {
+    justify-content: start;
+}
+.carousel-control-next {
+    justify-content: end;
+    margin-right: 2px;
+}
 .carousel-caption p {
     font-size: 35px;
     font-weight: 700;
@@ -294,7 +307,95 @@ html {
     width: 0px;
     height: 200px;
 } */
-
+.supply {
+    margin-left: 150px;
+    width:580px;
+    
+}
+.supply h5 {
+    margin-top: 50px;
+    margin-left: 25px;
+    
+}
+.supply p {
+    margin-left: 80px;
+    /* margin-right: 25px; */
+    margin-top: 25px;
+    text-align: justify;
+    padding-right: 50px;
+}
+.supply .btn {
+    margin-left: 70px;
+}
+.maintains {
+    margin-right: 150px;
+    width: 580px;
+    
+}
+.maintains h5 {
+    margin-top: 35px;
+    margin-left: 25px;
+}
+.maintains p {
+    margin-left: 80px;
+    /* margin-right: 25px; */
+    margin-top: 25px;
+    text-align: justify;
+    padding-right: 120px;
+    
+   
+}
+.maintains .btn {
+    margin-left: 70px;
+}
+.mannu {
+    margin-top: 20px;
+    margin-left: 150px;
+    width:580px;
+   margin-bottom: 100px;
+    
+}
+.mannu h5 {
+    margin-top: 50px;
+    margin-left: 25px;
+    
+}
+.mannu p {
+    margin-left: 80px;
+    /* margin-right: 25px; */
+    margin-top: 25px;
+    text-align: justify;
+    margin-right: 45px;
+    
+}
+.mannu .btn {
+    margin-left: 70px;
+   margin-bottom: 40px;
+}
+.testings {
+    margin-top: 20px;
+    margin-right: 150px;
+    width: 580px;
+    margin-bottom: 100px;
+    
+}
+.testings h5 {
+    margin-top: 45px;
+    margin-left: 25px;
+}
+.testings p {
+    margin-left: 80px;
+    /* margin-right: 25px; */
+    margin-top: 25px;
+    text-align: justify;
+    padding-right: 120px;
+    
+   
+}
+.testings .btn {
+    margin-left: 70px;
+    margin-bottom: 40px;
+}
 .partner-sec h5 {
     color:rgb(4, 103, 196) ;
     font-weight: 700;
@@ -452,6 +553,16 @@ html {
     display: block;
     width: 100%;
     height: auto;
+  }
+  .product-img {
+    position: relative;
+
+  }
+  .image-overley {
+    position: absolute;
+    top: 5px;
+    right: 80px;
+        
   }
   
   .overlay {

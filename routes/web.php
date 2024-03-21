@@ -34,7 +34,7 @@ Route::get('member/password/reset/{token}', 'App\Http\Controllers\Auth\ResetPass
 Route::post('member/password/reset', 'App\Http\Controllers\Auth\ResetPasswordController@reset')->name('member.password.update');
 
 //Electrotech
-Route::get('/home', [ElectromechController::class, 'index']);
+Route::get('/home', [ElectromechController::class, 'index'])->name('home');
 Route::get('/contact', [ElectromechController::class, 'contacts']);
 Route::get('/ongoingproject', [ElectromechController::class, 'ongoings'])->name('ongoing');
 Route::get('/bod', [ElectromechController::class, 'BOD'])->name('bods');
@@ -50,4 +50,9 @@ Route::get('/maintain', [ElectromechController::class, 'maintains'])->name('main
 Route::get('/supply', [ElectromechController::class, 'suppply'])->name('supply');
 Route::get('/testing', [ElectromechController::class, 'test'])->name('testings');
 Route::get('/transformers', [ElectromechController::class, 'transform'])->name('transforms');
+Route::get('/economic-series', [ElectromechController::class, 'economic'])->name('economics');
 Route::get('/world-super', [ElectromechController::class, 'world'])->name('worlds');
+Route::get('/mcb', [ElectromechController::class, 'miniatures'])->name('mcb');
+// Route::get('/world-super', [ElectromechController::class, 'world'])->name('worlds');
+// Route::get('/world-super', [ElectromechController::class, 'world'])->name('worlds');
+// Route::get('/world-super', [ElectromechController::class, 'world'])->name('worlds');

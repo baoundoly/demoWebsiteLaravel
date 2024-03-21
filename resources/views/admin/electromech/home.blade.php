@@ -7,7 +7,7 @@
         <div class="carousel-inner">
             {{-- <div class="carousel-item active">
                 <img src="{{ asset('common/images/slider_bg_transformer.png') }}" class="d-block w-100 " alt="...">
-                <div class="carousel-caption d-none d-md-block">
+                <div class="carousel-caption d-none d-md-block" data-aos="fade-left" data-aos-duration="2000">
                     <h5>EM Transformer</h5>
                     <p>Low Loss, Low Temperature Rise,<br> Ultimate Green Transformer.</p>
                 </div>
@@ -32,14 +32,14 @@
             @endforeach
             {{-- <div class="carousel-item">
                 <img src="{{ asset('common/images/low-voltage-componant-1.png') }}" class="d-block w-100 " alt="...">
-                <div class="carousel-caption d-none d-md-block">
+                <div class="carousel-caption d-none d-md-block"data-aos="fade-left" data-aos-duration="3000">
                     <h5>Low Voltage Component</h5>
                     <p>Make Electricity Safe.</p>
                 </div>
             </div>
             <div class="carousel-item">
                 <img src="{{ asset('common/images/BG-5.png') }}" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
+                <div class="carousel-caption d-none d-md-block" data-aos="fade-left" data-aos-duration="3000">
                     <h5>Busbar Trunking System</h5>
                     <p>Powerful Connection, Seamless Distribution</p>
                 </div>
@@ -269,90 +269,88 @@
 
          
             <div class="row d-flex justify-content-center mt-5">
-                <div class="col-md-4">
-                    <div class="card h-100" data-aos="fade-in" data-aos-easing="ease-in-out" data-aos-duration="3000">
+                <div class="col-md-6">
+                    <div class="supply card h-100 " data-aos="fade-in" data-aos-easing="ease-in-out" data-aos-duration="3000">
                         <div style="box-shadow: 0px 0px 25px -10px rgba(124.00000000000001, 146.9999999999999, 255, 0.5); transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;"
                             class="card-body">
-                            <h5 class="card-title p-3"><i aria-hidden="true" class="fas fa-fan fa-2xl pe-3"
+                            <h5 class="card-title "><i aria-hidden="true" class="fas fa-fan fa-2xl pe-3"
                                     style="color: rgb(255, 106, 0);"></i>Supply and Installation</h5>
-                            <p class="card-text p-3">We provide electrical equipment supply, installation, and other
+                            <p class="card-text ">We provide electrical equipment supply, installation, and other
                                 associated services to commercial and industrial clients and owners of high and
                                 low-voltage electrical distribution systems.</p>
-                            <div class="pt-2 ps-5"><a href="supply.html"
+                            <div class="pt-2 "><a href="{{ route ('supply') }}"
                                     class="btn btn-secondary text-dark rounded-pill bg-transparent">Read More</a></div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card h-100" data-aos="fade-out" data-aos-easing="ease-in" data-aos-duration="3000">
+                <div class="col-md-6">
+                    <div class="maintains card h-100 " data-aos="fade-out" data-aos-easing="ease-in" data-aos-duration="3000">
                         <div style="box-shadow: 0px 0px 25px -10px rgba(124.00000000000001, 146.9999999999999, 255, 0.5); transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;"
                             class="card-body">
                             <div class="card-body">
-                                <h5 class="card-title p-3"><i aria-hidden="true" class="fas fa-fill fa-2xl pe-3"
+                                <h5 class="card-title"><i aria-hidden="true" class="fas fa-fill fa-2xl pe-3"
                                         style="color: rgb(255, 106, 0);"></i>Maintenance</h5>
-                                <p class="card-text p-3">We specialize in power and electrical maintenance,
-                                    troubleshooting,
+                                <p class="card-text w-100">We specialize in power and electrical maintenance,troubleshooting,
                                     and repair. We are a fully licensed and insured company that is dedicated to
                                     providing our customers with the highest level of service possible.</p>
-                                <div class="pt-2 ps-5"><a href="maintain.html"
+                                <div class=" "><a href="{{ route ('maintaining') }}"
                                         class="btn btn-secondary text-dark rounded-pill bg-transparent">Read More</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row d-flex justify-content-center mt-4">
-                    <div class="col-md-4">
-                        <div class="card h-100" data-aos="fade-out" data-aos-easing="ease-in-out"
+                
+                    <div class="col-md-6">
+                        <div class="mannu card " data-aos="fade-out" data-aos-easing="ease-in-out"
                             data-aos-duration="3000">
 
                             <div style="box-shadow: 0px 0px 25px -10px rgba(124.00000000000001, 146.9999999999999, 255, 0.5); transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;"
                                 class="card-body">
-                                <h5 class="card-title p-3"><i aria-hidden="true" class="fab fa-safari fa-2xl pe-3"
+                                <h5 class="card-title "><i aria-hidden="true" class="fab fa-safari fa-2xl pe-3"
                                         style="color: rgb(255, 106, 0);"></i>Manufacturing Facility</h5>
-                                <p class="card-text p-3">We are a manufacturing company that specializes in electrical
+                                <p class="card-text ">We are a manufacturing company that specializes in electrical
                                     power
                                     and distribution equipment. We provide services, products, and solutions in this
                                     area. Any Designated Manufacturing Facility shall be a third-party beneficiary..</p>
-                                <div class="pt-2 ps-5"><a href="manufacturing.html"
+                                <div class=" "><a href="{{ route ('maanufacture') }}"
                                         class="btn btn-secondary text-dark rounded-pill bg-transparent">Read More</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="card h-100" data-aos="fade-in" data-aos-easing="ease-in-out"
+                    <div class="col-md-6">
+                        <div class="testings card " data-aos="fade-in" data-aos-easing="ease-in-out"
                             data-aos-duration="3000">
 
                             <div style="box-shadow: 0px 0px 25px -10px rgba(124.00000000000001, 146.9999999999999, 255, 0.5); transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;"
                                 class="card-body">
-                                <h5 class="card-title p-3"><i aria-hidden="true"
+                                <h5 class="card-title"><i aria-hidden="true"
                                         class="fas fa-assistive-listening-systems fa-2xl pe-3"
                                         style="color: rgb(255, 106, 0);"></i>Testing Facility</h5>
-                                <p class="card-text p-3">A power and electrical engineering company with a team of
+                                <p class="card-text">A power and electrical engineering company with a team of
                                     professional engineers. We test your products to ensure they meet the highest
                                     demands in safety, reliability, performance, and sustainability.</p>
-                                <div class="pt-2 ps-5"><a href="testing.html"
+                                <div class=""><a href="{{ route ('testings') }}"
                                         class="btn btn-secondary text-dark rounded-pill bg-transparent">Read More</a>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
 
-
-
-
-
     </div>
+
+
+
     <section id="global">
         <div style="background-color: lightgray;">
             <div class="container">
                 <div class="partner-sec">
                     <div data-aos="fade-right" data-aos-easing="ease" data-aos-duration="1500">
-                        <h5 class="my-5 py-5">Our Global Partner</h5>
+                        <h5 class="mb-5 py-5">Our Global Partner</h5>
                     </div>
 
                     <div class="global row pb-5" data-aos="fade-in" data-aos-easing="ease" data-aos-duration="3000">

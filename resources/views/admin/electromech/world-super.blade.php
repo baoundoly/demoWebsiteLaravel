@@ -2,11 +2,33 @@
 @extends('admin.electromech.layout')
 @section('content')
 <section class="content">
-
+    {{-- <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{{ route ('home') }}">Home</a></li>
+          <li class="breadcrumb-item"><a href="#">Low Voltage Component</a></li>
+          <li class="breadcrumb-item active" aria-current="page">World Super WS Series: 630A-6300A</li>
+        </ol>
+      </nav> --}}
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{{ route ('home') }}">Home</a></li>
+          <li class="breadcrumb-item"><a href="#">Low Voltage Component</a></li>
+          <li class="breadcrumb-item active" aria-current="page">World Super WS Series: 630A-6300A</li>
+        </ol>
+      </nav>
     <div class="container">
         <div class="row mt-5 pt-5">
             <div class="col-lg-6">
-                <img src="https://electromechbd.net/wp-content/uploads/2023/03/ACB-copy.png" alt="">
+                <div class="product-img">
+                    
+                    <div><img src="https://electromechbd.net/wp-content/uploads/2023/03/ACB-copy.png" alt=""></div>
+                <div class="image-overley">
+                    <a class=""href="https://electromechbd.net/wp-content/uploads/2023/03/ACB-copy.png"><button
+                        class="btn bg-transparent" type="button"><i class="fa-solid fa-magnifying-glass"></i></button></a>
+                </div>
+                </div>
+                
+              
             </div>
             <div class="col-lg-6">
                 <div class="product-title  border-1 border-bottom border-secendary">
@@ -29,6 +51,7 @@
                 <div>
                     Categories:<span class="product-text">
                         Air Circuit breaker (ACB), Low Voltage Component
+                    
                     </span>
                 </div>
             </div>
