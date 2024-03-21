@@ -3,16 +3,34 @@
 <section class="content">
 
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-
+        
         <div class="carousel-inner">
-            <div class="carousel-item active">
+            {{-- <div class="carousel-item active">
                 <img src="{{ asset('common/images/slider_bg_transformer.png') }}" class="d-block w-100 " alt="...">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>EM Transformer</h5>
                     <p>Low Loss, Low Temperature Rise,<br> Ultimate Green Transformer.</p>
                 </div>
+            </div> --}}
+            @foreach($sliders as $slider)
+            @if ($loop->first)
+                @php
+                    $active = "active";
+                @endphp
+            @else
+                @php
+                    $active = "";
+                @endphp
+            @endif
+            <div class="carousel-item {{ $active }}">
+                <img src="{{ asset('common/images/' . $slider->img) }}" class="d-block w-100 " alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>{!! $slider->title !!}</h5>
+                    <p>{!! $slider->description !!}</p>
+                </div>
             </div>
-            <div class="carousel-item">
+            @endforeach
+            {{-- <div class="carousel-item">
                 <img src="{{ asset('common/images/low-voltage-componant-1.png') }}" class="d-block w-100 " alt="...">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Low Voltage Component</h5>
@@ -25,7 +43,7 @@
                     <h5>Busbar Trunking System</h5>
                     <p>Powerful Connection, Seamless Distribution</p>
                 </div>
-            </div>
+            </div> --}}
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
             data-bs-slide="prev">
@@ -45,31 +63,9 @@
                     <h3>ABOUT ELECTROMECH</h3>
                 </div>
                 <div data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1000">
-                    <p>
-                        ABOUT ELECTROMECH
-                        We, ELECTROMECH, have taken our range of innovative solutions a step further. From design to
-                        final
-                        production a complete quality cycle compliant to the requirement of international standard ISO
-                        9001:2015
-                        and beyond has been developed. Our solutions help our customers to maximize their value.<br><br>
-
-                        Our complete electrical solution from 132kV system to machine connections including HT, LT
-                        Switchgears,
-                        PFI Plant & Motor Control Centre construction Form 2, 3b, 4b compliant to the standard IEC
-                        61439-1 &
-                        2:2011, transformers upto 12.5MVA compliant to the standard IEC 60076, Busbar Trunking system,
-                        Factory
-                        Automation & Building management, ESE Lightning Protection system (protection for direct &
-                        indirect
-                        thundering) and components support from ready stock.<br><br>
-
-                        A smart sourcing from World’s Leader MITSUBISHI ELECTRIC CO. -Japan, FRAKO-Germany & DTM-Turkey,
-                        sharing
-                        knowledge & expertise, we thus go for smart partnering with our customers.We & our customers
-                        thus
-                        enjoy
-                        a WIN WIN environment and engage repeated contracts, create physical evidences of successes &
-                        satisfactions.</p>
+                    @foreach($abouts as $about)
+                    <p>{!! $about->description !!}</p>
+                    @endforeach
                 </div>
             </div>
             <div class="first-sec-body col-sm-4 col-md-4">
@@ -106,9 +102,11 @@
                     <h5>ELECTROMECH PRODUCT RANGE:</h5>
                 </div>
                 <ul style="list-style-type: none;">
+                    @foreach($products as $product)
                     <li><i class="fa-sharp fa-solid fa-circle-check" style="color: #74C0FC;"></i>
-                        33/11kV, Power Transformer with OLTC</li>
-                    <li><i class="fa-sharp fa-solid fa-circle-check" style="color: #74C0FC;"></i>
+                        {{$product->list}}</li>
+                    @endforeach
+                    {{-- <li><i class="fa-sharp fa-solid fa-circle-check" style="color: #74C0FC;"></i>
                         11/0.415kV Distribution Transformer with OLTC/NLTC</li>
                     <li><i class="fa-sharp fa-solid fa-circle-check" style="color: #74C0FC;"></i>
                         HT Switchgear upto 132kV</li>
@@ -132,7 +130,7 @@
                     <li><i class="fa-sharp fa-solid fa-circle-check" style="color: #74C0FC;"></i>
                         Diesel Generator</li>
                     <li><i class="fa-sharp fa-solid fa-circle-check" style="color: #74C0FC;"></i>
-                        Lightning Protection System</li>
+                        Lightning Protection System</li> --}}
 
                 </ul>
             </div>
@@ -153,9 +151,11 @@
             </div>
             <div data-aos="fade-down" data-aos-easing="ease" data-aos-duration="1000">
                 <ul style="list-style-type: none;">
+                    @foreach($stocks as $stock)
                     <li><i class="fa-sharp fa-solid fa-circle-check" style="color: #74C0FC;"></i>
-                        Mitsubishi range Air Circuit Breaker (ACB) upto 6300A</li>
-                    <li><i class="fa-sharp fa-solid fa-circle-check" style="color: #74C0FC;"></i>
+                        {{$stock->list}}</li>
+                    @endforeach
+                    {{-- <li><i class="fa-sharp fa-solid fa-circle-check" style="color: #74C0FC;"></i>
                         Mitsubishi range of Molded Case Circuit Breaker (MCCB) upto 1600A
                     </li>
                     <li><i class="fa-sharp fa-solid fa-circle-check" style="color: #74C0FC;"></i>
@@ -170,7 +170,7 @@
 
                         Mitsubishi range of Metering devices</li>
                     <li><i class="fa-sharp fa-solid fa-circle-check" style="color: #74C0FC;"></i>
-                        FRAKO range of capacitors</li>
+                        FRAKO range of capacitors</li> --}}
                 </ul>
             </div>
             <div data-aos="fade-up" class="txt">
@@ -239,19 +239,21 @@
                     participants.</p>
             </div>
             <div class="row">
-
+                @foreach ($images as $image)
                 <div class="col-md-4 pe-2">
-                    <img src="{{ asset('common/images/img-sec1.jpg') }}" class="" alt="..." width="100%" height="100%">
+                    <img src="{{ asset('common/images/'. $image->img) }}" class="" alt="..." width="100%" height="100%">
 
                 </div>
-                <div class="col-md-4 pe-2">
+                    
+                @endforeach
+                {{-- <div class="col-md-4 pe-2">
                     <img src="{{ asset('common/images/img-sec2.jpg') }}" class="" alt="..." width="100%" height="100%">
 
                 </div>
                 <div class="col-md-4">
                     <img src="{{ asset('common/images/img-sec3.jpg') }}" class="" alt="..." width="100%" height="100%">
 
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

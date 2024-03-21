@@ -26,14 +26,25 @@ class SliderController extends Controller
         $validatedData = $request->validate([
                 'title' => 'required',
                 'description' => 'required',
-                'img' => 'required',
             ], [
                 'title.required' => 'Title field is required.',
                 'description.required' => 'Description field is required.',
-                'img.required' => 'Image field is required.',
             ]);
-      
-        $user = Slider::create($validatedData);
+            
+        $slider = new Slider();
+        $slider->title = $request->title;
+        $slider->description = $request->description;
+        $file = $request->file('img');
+        if($file){
+            $file_name = $file->getClientOriginalName();
+            $upload_path = 'public/common/images/';
+            $file->move($upload_path, $file_name);
+            $slider->img = $file_name;
+        }
+        $slider->save();
+            
+        // $user = Slider::create($validatedData);
+        // dd($slider);
             
         // return back()->with('success', 'Post created successfully.');
         return redirect()->route('admin.home-management.slider-info.list')->with('success', 'Slider created successfully.');
@@ -47,7 +58,14 @@ class SliderController extends Controller
         $slider = Slider::find($slider);
         $slider->title = $request->input('title');
         $slider->description = $request->input('description');
-        $slider->img = $request->input('img');
+        // $slider->img = $request->input('img');
+        $file = $request->file('img');
+        if($file){
+            $file_name = $file->getClientOriginalName();
+            $upload_path = 'public/common/images/';
+            $file->move($upload_path, $file_name);
+            $slider->img = $file_name;
+        }
         $slider->update();
 
         $sliders = $slider->all();

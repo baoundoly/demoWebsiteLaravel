@@ -2,13 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
+use App\Models\Image;
+use App\Models\Product;
+use App\Models\Service;
+use App\Models\Slider;
+use App\Models\Stock;
 use Illuminate\Http\Request;
 
 class ElectromechController extends Controller
 {
     public function index ()
     {
-         return view('.admin.electromech.home');
+        $sliders = Slider::all();
+        $abouts = About::all();            
+        $products = Product::all();            
+        $stocks = Stock::all();            
+        $services = Service::all();
+        $images = Image::all();
+        return view('.admin.electromech.home', [
+            'sliders' => $sliders,
+            'abouts' => $abouts,
+            'products' => $products,
+            'stocks' => $stocks,
+            'services' => $services,
+            'images' => $images,
+        ]);
     }
 
     public function contacts (){
