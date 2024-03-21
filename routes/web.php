@@ -50,3 +50,4 @@ Route::get('/maintain', [ElectromechController::class, 'maintains'])->name('main
 Route::get('/supply', [ElectromechController::class, 'suppply'])->name('supply');
 Route::get('/testing', [ElectromechController::class, 'test'])->name('testings');
 Route::get('/transformers', [ElectromechController::class, 'transform'])->name('transforms');
+Route::get('/world-super', [ElectromechController::class, 'world'])->name('worlds');
