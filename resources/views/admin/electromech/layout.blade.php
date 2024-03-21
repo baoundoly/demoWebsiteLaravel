@@ -32,8 +32,12 @@
             </button>
             <div class="collapse navbar-collapse " id="navbarNav">
                 <a class="navbar-brand" href="{{ ('home') }}">
-                    <img src="https://electromechbd.net/wp-content/uploads/2023/03/electromech-logo-02.png" alt="Logo"
+                    @if ($logo)
+                        <img src="{{ asset('common/images/'. $logo[0]->img) }}" alt="Logo"
                         width="205" height="40" class="d-inline-block align-text-top">
+                    @endif
+                    {{-- <img src="https://electromechbd.net/wp-content/uploads/2023/03/electromech-logo-02.png" alt="Logo"
+                        width="205" height="40" class="d-inline-block align-text-top"> --}}
 
                 </a>
                 <ul class="navbar-nav  ms-auto  m-2 ">

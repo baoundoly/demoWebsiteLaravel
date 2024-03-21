@@ -19,14 +19,17 @@ class ElectromechController extends Controller
         $products = Product::all();            
         $stocks = Stock::all();            
         $services = Service::all();
-        $images = Image::all();
+        // $images = Image::all();
+        $participants = Image::where('img', 'LIKE', '%img-sec%')->get();
+        $logo = Image::where('img', 'LIKE', '%logo%')->get();
         return view('.admin.electromech.home', [
             'sliders' => $sliders,
             'abouts' => $abouts,
             'products' => $products,
             'stocks' => $stocks,
             'services' => $services,
-            'images' => $images,
+            'participants' => $participants,
+            'logo' => $logo,
         ]);
     }
 

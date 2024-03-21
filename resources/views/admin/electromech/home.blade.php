@@ -239,9 +239,9 @@
                     participants.</p>
             </div>
             <div class="row">
-                @foreach ($images as $image)
+                @foreach ($participants as $participant)
                 <div class="col-md-4 pe-2">
-                    <img src="{{ asset('common/images/'. $image->img) }}" class="" alt="..." width="100%" height="100%">
+                    <img src="{{ asset('common/images/'. $participant->img) }}" class="" alt="..." width="100%" height="100%">
 
                 </div>
                     
