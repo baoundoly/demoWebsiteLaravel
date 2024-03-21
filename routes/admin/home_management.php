@@ -48,3 +48,11 @@ Route::prefix( 'service-info' )->name( 'service-info.' )->group( function () {
     Route::post( '/update/{editData}', 'ServiceController@update' )->name( 'update' );
     Route::post( '/destroy', 'ServiceController@destroy' )->name( 'destroy' );
 });
+Route::prefix( 'image-info' )->name( 'image-info.' )->group( function () {
+    Route::get( '/list', 'ImageController@list' )->name( 'list' );
+    Route::get( '/add', 'ImageController@add' )->name( 'add' );
+    Route::post( '/store', 'ImageController@store' )->name( 'store' );
+    Route::get( '/edit/{editData}', 'ImageController@edit' )->name( 'edit' );
+    Route::post( '/update/{editData}', 'ImageController@update' )->name( 'update' );
+    Route::post( '/destroy', 'ImageController@destroy' )->name( 'destroy' );
+});
