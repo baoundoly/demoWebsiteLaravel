@@ -99,11 +99,12 @@ class NavController extends Controller
 
 			$NavData->parent = $parent;
 			$NavData->sort   = $request->sort;
-			$NavData->created_by   = auth()->user()->id;
+			// $NavData->created_by   = auth()->user()->id;
             $NavData->save();
 
-			DB::commit();
-			return response()->json(['status'=>'success','message'=>'Data Successfully Updated','reload_url'=>route('admin.home-management.nav-info.list')]);
+			// DB::commit();
+			// return response()->json(['status'=>'success','message'=>'Data Successfully Updated','reload_url'=>route('admin.home-management.nav-info.list')]);
+            return redirect()->route('admin.home-management.nav-info.list')->with('success', 'Data updated successfully.');
 		} catch (\Exception $e) {
 			DB::rollback();
             return response()->json(['status'=>'error','message'=>$e->getMessage()]);

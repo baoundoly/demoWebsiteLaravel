@@ -39,7 +39,7 @@ if (!function_exists('getPrivateSubNav')) {
 									</div>  
 								</div> 
 								<div class="col-sm-4">  
-									<div class="form-group">   
+									<div class="form-group {{$errors->has('main_nav') ? 'has-error' : ''}}">   
 										<label class="control-label">Parent</label>  
 										<select name="main_nav" class="form-control form-control-sm select2 main_nav">  
 											<?php echo getPrivateSubNav($wheredata=['parent'=>0],$selected_sub_Nav_id = @$menu_parent[0]);?>   
