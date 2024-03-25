@@ -64,41 +64,123 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header text-right">
-               <h4 class="card-title">Nav</h4>
+               <h4 class="card-title">Nav list</h4>
                 <a id="demo-btn-addrow" class="btn btn-success btn-sm" href="{{route('admin.home-management.nav-info.add')}}">
                     <i class="ion-plus"></i> Add Nav
                 </a>
             </div>
             <div class="card-body">
-                <table id="dataTable" class="table table-sm table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th width="5%">SL.</th>
-                            <th width="40%" class="text-center">Name</th>
-                            <th class="text-center">Parent</th>
-                            <th class="text-center">Sort</th>
-                            <th width="15%" class="text-center">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="sortable" class="sortable">
-                        @foreach($navs as $nav)
-                        <tr data-id="{{$nav->id}}">
-                            <td>{{ $loop->iteration}}</td>
-                            <td class="text-center">{{ $nav->name }}</td>
-                            <td class="text-center">{{ $nav->parent }}</td>
-                            <td class="text-center">{{ $nav->sort }}</td>
-                            <td class="text-center">
-                                <a class="btn btn-sm btn-success" href="{{route('admin.home-management.nav-info.edit', [$nav->id])}}">
-                                    <i class="fa fa-edit"></i>
-                                </a>
-                                <a class="btn btn-sm btn-danger destroy" data-id="{{$nav->id}}" data-route="{{route('admin.home-management.nav-info.destroy')}}">
-                                    <i class="fa fa-trash"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="nestable" style="width: 100%;">
+                            <?php $parents = App\Models\Nav::where('parent','0')->orderBy('sort','asc')->get();?>
+                            @if(count($parents) != 0)
+                            <ol class="dd-list new_data">
+                                @foreach($parents as $parent)
+                                <li class="dd-item" data-id="{{$parent->id}}">
+                                    <div class="dd-handle text-dark"> <i class="ion-log-out text-success"></i> | {{$parent->name}} </div>
+                                    <span style="font-size: 20px;z-index:10;position:absolute; right:35px; top:4px; cursor:pointer;">
+                                        <a href="{{route('admin.home-management.nav-info.edit',$parent->id)}}">
+                                            <i class="fa fa-edit text-primary"></i>
+                                        </a>
+                                        <a class="destroy" data-id="{{$parent->id}}" data-route="{{route('admin.home-management.nav-info.destroy')}}">
+                                            <i class="fa fa-trash text-danger"></i>
+                                        </a>
+                                    </span>
+                                    <span style="z-index:10;position:absolute; right:90px; top:4px; cursor:pointer;font-weight: bold;">
+                                        {{@$parent['module']['name']}}
+                                    </span>
+                                    <?php $parents = App\Models\Nav::where('parent',$parent->id)->orderBy('sort','asc')->get();?>
+                                    @if(count($parents) != 0)
+                                    <ol class="dd-list">
+                                        @foreach($parents as $parent)
+                                        <li class="dd-item" data-id="{{$parent->id}}">
+                                            <div class="dd-handle text-dark"> <i class="ion-arrow-expand text-success"></i> | {{$parent->name}} </div>
+                                            <span style="font-size: 20px;z-index:10;position:absolute; right:35px; top:4px; cursor:pointer;">
+                                                <a href="{{route('admin.home-management.nav-info.edit',$parent->id)}}">
+                                                    <i class="fa fa-edit text-primary"></i>
+                                                </a>
+                                                <a class="destroy" data-id="{{$parent->id}}" data-route="{{route('admin.home-management.nav-info.destroy')}}">
+                                                    <i class="fa fa-trash text-danger"></i>
+                                                </a>
+                                            </span>
+                                            <span style="z-index:10;position:absolute; right:90px; top:4px; cursor:pointer;font-weight: bold;">
+                                                {{@$parent['module']['name']}}
+                                            </span>
+                                            <?php $parents = App\Models\Nav::where('parent',$parent->id)->orderBy('sort','asc')->get();?>
+                                            @if(count($parents) != 0)
+                                            <ol class="dd-list">
+                                                @foreach($parents as $parent)
+                                                <li class="dd-item" data-id="{{$parent->id}}">
+                                                    <div class="dd-handle text-dark"> <i class="ion-arrow-expand text-success"></i> | {{$parent->name}} </div>
+                                                    <span style="font-size: 20px;z-index:10;position:absolute; right:35px; top:4px; cursor:pointer;">
+                                                        <a href="{{route('admin.home-management.nav-info.edit',$parent->id)}}">
+                                                            <i class="fa fa-edit text-primary"></i>
+                                                        </a>
+                                                        <a class="destroy" data-id="{{$parent->id}}" data-route="{{route('admin.home-management.nav-info.destroy')}}">
+                                                            <i class="fa fa-trash text-danger"></i>
+                                                        </a>
+                                                    </span>
+                                                    <span style="z-index:10;position:absolute; right:90px; top:4px; cursor:pointer;font-weight: bold;">
+                                                        {{@$parent['module']['name']}}
+                                                    </span>
+                                                    <?php $parents = App\Models\Nav::where('parent',$parent->id)->orderBy('sort','asc')->get();?>
+                                                    @if(count($parents) != 0)
+                                                    <ol class="dd-list">
+                                                        @foreach($parents as $parent)
+                                                        <li class="dd-item" data-id="{{$parent->id}}">
+                                                            <div class="dd-handle text-dark"> <i class="ion-arrow-expand text-success"></i> | {{$parent->name}} </div>
+                                                            <span style="font-size: 20px;z-index:10;position:absolute; right:35px; top:4px; cursor:pointer;">
+                                                                <a href="{{route('admin.home-management.nav-info.edit',$parent->id)}}">
+                                                                    <i class="fa fa-edit text-primary"></i>
+                                                                </a>
+                                                                <a class="destroy" data-id="{{$parent->id}}" data-route="{{route('admin.home-management.nav-info.destroy')}}">
+                                                                    <i class="fa fa-trash text-danger"></i>
+                                                                </a>
+                                                            </span>
+                                                            <span style="z-index:10;position:absolute; right:90px; top:4px; cursor:pointer;font-weight: bold;">
+                                                                {{@$parent['module']['name']}}
+                                                            </span>
+                                                            <?php $parents = App\Models\Nav::where('parent',$parent->id)->orderBy('sort','asc')->get();?>
+                                                            @if(count($parents) != 0)
+                                                            <ol class="dd-list">
+                                                                @foreach($parents as $parent)
+                                                                <li class="dd-item" data-id="{{$parent->id}}">
+                                                                    <div class="dd-handle text-dark"> <i class="ion-arrow-expand text-success"></i> | {{$parent->name}} </div>
+                                                                    <span style="font-size: 20px;z-index:10;position:absolute; right:35px; top:4px; cursor:pointer;">
+                                                                        <a href="{{route('admin.home-management.nav-info.edit',$parent->id)}}">
+                                                                            <i class="fa fa-edit text-primary"></i>
+                                                                        </a>
+                                                                        <a class="destroy" data-id="{{$parent->id}}" data-route="{{route('admin.home-management.nav-info.destroy')}}">
+                                                                            <i class="fa fa-trash text-danger"></i>
+                                                                        </a>
+                                                                    </span>
+                                                                    <span style="z-index:10;position:absolute; right:90px; top:4px; cursor:pointer;font-weight: bold;">
+                                                                        {{@$parent['module']['name']}}
+                                                                    </span>
+                                                                </li>
+                                                                @endforeach
+                                                            </ol>
+                                                            @endif
+                                                        </li>
+                                                        @endforeach
+                                                    </ol>
+                                                    @endif
+                                                </li>
+                                                @endforeach
+                                            </ol>
+                                            @endif
+                                        </li>
+                                        @endforeach
+                                    </ol>
+                                    @endif
+                                </li>
+                                @endforeach
+                            </ol>
+                            @endif
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>	

@@ -4,11 +4,9 @@ namespace App\Http\Controllers\Admin\HomeManagement;
 
 use App\Http\Controllers\Controller;
 use App\Models\Nav;
-use Dotenv\Validator;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator as FacadesValidator;
+use Illuminate\Support\Facades\Validator;
 
 class NavController extends Controller
 {
@@ -23,9 +21,9 @@ class NavController extends Controller
     }
 
 
-	public function store(Request $request): RedirectResponse
+	public function store(Request $request)
 	{
-        $validator = FacadesValidator::make($request->all(), 
+        $validator = Validator::make($request->all(), 
             [
 			'name' => ['required'],
 			'sort' => ['required']
@@ -45,32 +43,59 @@ class NavController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $NavData = new Nav();
-        $NavData->name   = $request->name;
+		DB::beginTransaction();
+		try {
+			$menuData = new Nav();
+			$menuData->name   = $request->name;
 
-        if($request->main_nav != ''){
-            $parent = $request->main_nav;
-        }else{
-            $parent = 0;
-        }
+			if($request->sub_menu_4 != ''){
+				$parent = $request->sub_menu_4;
+			}else if($request->sub_menu_3 != ''){
+				$parent = $request->sub_menu_3;
+			}else if($request->sub_menu_2 != ''){
+				$parent = $request->sub_menu_2;
+			}else if($request->sub_menu_1 != ''){
+				$parent = $request->sub_menu_1;
+			}else if($request->main_menu != ''){
+				$parent = $request->main_menu;
+			}else{
+				$parent = 0;
+			}
 
-        $NavData->parent = $parent;
-        $NavData->sort   = $request->sort;
-        $NavData->save();
-            
-		return redirect()->route('admin.home-management.nav-info.list')->with('success', 'Data created successfully.');
+			$menuData->parent = $parent;
+			$menuData->sort   = $request->sort;
+            $menuData->save();
+			
+			DB::commit();
+			return redirect()->route('admin.home-management.nav-info.list')->with('success', 'Data created successfully.');
+		} catch (\Exception $e) {
+			DB::rollback();
+            return response()->json(['status'=>'error','message'=>$e->getMessage()]);
+		}
 	}
 
-	public function edit(Nav $editData) {
-        return view('admin.home-management.nav-info.add', ['editData' => $editData]);
-    }
+	public function edit(Request $request,$id)
+	{
+        $data['title'] = 'Edit Menu';
+		$data['editData'] = Nav::find($id);
+
+		$menu_parent = [];
+		$x = $data['editData']['parent'];
+		while($x > 0) {
+			$menu_parent[] = $x;
+			$menu = Nav::find($x);
+			$x = $menu['parent'];
+		} 
+		$data['menu_parent']=array_reverse($menu_parent);
+		return view('admin.home-management.nav-info.add',$data);
+	}
 
 	public function update(Request $request,$id)
 	{
-        $validator = FacadesValidator::make($request->all(), 
+        $validator = Validator::make($request->all(), 
             [
 			'name' => ['required'],
-			'sort' => ['required'],
+			'sort' => ['required']
             ]
         );
 
@@ -88,27 +113,55 @@ class NavController extends Controller
         }  
 		DB::beginTransaction();
 		try {
-			$NavData = Nav::find($id);
-			$NavData->name   = $request->name;
+			$menuData = Nav::find($id);
+			$menuData->name   = $request->name;
 
-			if($request->main_nav != ''){
-				$parent = $request->main_nav;
+			if($request->sub_menu_4 != ''){
+				$parent = $request->sub_menu_4;
+			}else if($request->sub_menu_3 != ''){
+				$parent = $request->sub_menu_3;
+			}else if($request->sub_menu_2 != ''){
+				$parent = $request->sub_menu_2;
+			}else if($request->sub_menu_1 != ''){
+				$parent = $request->sub_menu_1;
+			}else if($request->main_menu != ''){
+				$parent = $request->main_menu;
 			}else{
 				$parent = 0;
 			}
 
-			$NavData->parent = $parent;
-			$NavData->sort   = $request->sort;
-			// $NavData->created_by   = auth()->user()->id;
-            $NavData->save();
+			$menuData->parent = $parent;
+			$menuData->sort   = $request->sort;
+			// $menuData->created_by   = auth()->user()->id;
+            $menuData->save();
 
-			// DB::commit();
-			// return response()->json(['status'=>'success','message'=>'Data Successfully Updated','reload_url'=>route('admin.home-management.nav-info.list')]);
-            return redirect()->route('admin.home-management.nav-info.list')->with('success', 'Data updated successfully.');
+			DB::commit();
+			return redirect()->route('admin.home-management.nav-info.list')->with('success', 'Data updated successfully.');
 		} catch (\Exception $e) {
 			DB::rollback();
             return response()->json(['status'=>'error','message'=>$e->getMessage()]);
 		}
+	}
+
+	public function getSubMenu(Request $request){
+		$parent = $request->parent;
+		return $this->getPrivateSubMenu($wheredata=['parent'=>$parent],$selected_sub_menu_id = null);
+	}
+
+
+	private function getPrivateSubMenu($wheredata = ['parent' => null], $selected_sub_menu_id = null)
+	{
+		$sub_menus = Nav::where('parent', $wheredata['parent'])->orderBy('sort', 'asc')->get();
+		$html      = '<option value="">' . __('Select Sub Menu') . '</option>';
+		foreach ($sub_menus as $key => $sub_menu) {
+			if ($selected_sub_menu_id == $sub_menu->id) {
+				$select = 'selected';
+			} else {
+				$select = '';
+			}
+			$html .= '<option value="' . $sub_menu['id'] . '" ' . @$select . '>' . $sub_menu['name'] . '</option>';
+		}
+		return $html;
 	}
 
     public function destroy(Request $request) {
@@ -120,25 +173,4 @@ class NavController extends Controller
             return response()->json(['status'=>'error','message'=>'Sorry something wrong']);
         }
     }
-
-	public function getSubNav(Request $request){
-		$parent = $request->parent;
-		return $this->getPrivateSubNav($wheredata=['parent'=>$parent],$selected_sub_Nav_id = null);
-	}
-
-
-	private function getPrivateSubNav($wheredata = ['parent' => null], $selected_sub_Nav_id = null)
-	{
-		$sub_Navs = Nav::where('parent', $wheredata['parent'])->orderBy('sort', 'asc')->get();
-		$html      = '<option value="">' . __('Select Sub Nav') . '</option>';
-		foreach ($sub_Navs as $key => $sub_Nav) {
-			if ($selected_sub_Nav_id == $sub_Nav->id) {
-				$select = 'selected';
-			} else {
-				$select = '';
-			}
-			$html .= '<option value="' . $sub_Nav['id'] . '" ' . @$select . '>' . $sub_Nav['name'] . '</option>';
-		}
-		return $html;
-	}
 }
